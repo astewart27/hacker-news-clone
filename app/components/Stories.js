@@ -10,6 +10,7 @@ class Stories extends Component {
         return (
             <div className="stories-component">
                 <h1>Stories Component</h1>
+                {this.props.stories.map(story => console.log(story))}
             </div>
         )
     }
