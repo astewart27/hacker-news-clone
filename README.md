@@ -1,1 +1,1 @@
-# hacker-news-clone
+# Hacker News Clone built in React without `create-react-app`
