@@ -5,9 +5,21 @@
   "main": "index.js",
   "babel": {
     "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ]
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        },
+        "@babel/preset-react"
+      ]
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties"
+      ]
+  ]
   },
   "scripts": {
     "start": "webpack-dev-server --open"
@@ -29,11 +41,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.0",
     "@babel/plugin-transform-runtime": "^7.5.0",
     "@babel/preset-env": "^7.5.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.5.3",
     "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
     "css-loader": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
