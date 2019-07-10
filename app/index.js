@@ -13,22 +13,37 @@ const JSON_QUERY = ".json?print=pretty";
 class App extends React.Component{
 
     state = {
-        stories: []
+        news: []
     }
 
     async componentDidMount() {
-        const response = await fetch(`https://hacker-news.firebaseio.com/v0/topstories${JSON_QUERY}`);
-        const data = await response.json();
+        const primary = await fetch(`https://hacker-news.firebaseio.com/v0/topstories${JSON_QUERY}`);
+        const data = await primary.json();
         const stories = data.slice(0,30);
-        console.log(stories);
-        this.setState({ stories });
+        this.getNews(stories);
+    }
+
+    getNews(stories) {
+        const result = [];
+        stories.map((story) => {
+            fetch(`https://hacker-news.firebaseio.com/v0/item/${story}${JSON_QUERY}`)
+            .then(res => res.json())
+            .then(data => {
+                if(!result.includes(data)) {
+                    result.push(data);
+                }
+            });
+        });
+        this.setState({news: result});
     }
 
     render(){
         return(
             <div className="hacker-news-wrapper">
                 <Header/>
-                <Stories stories={this.state.stories}/>
+                {this.state.news && 
+                    <Stories stories={this.state.news}/>
+                }
             </div>
         );
     }
