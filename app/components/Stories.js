@@ -1,13 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react';
+import StoryItem from './StoryItem';
 
-class Stories extends Component {
+class Stories extends React.Component {
 
     render() {
+        console.log(this.props.stories);
         return (
             <div className="stories-component">
-                <h1>Stories Component</h1>
+                {this.props.stories.map((item, index) => {
+                    return(
+                        <div key={index}>
+                            <StoryItem details={item}/>
+                        </div>
+                    );
+                })}
             </div>
-        )
+        );
     }
 }
 

@@ -2,5 +2,72 @@
     width:100%;
     max-width:1000px;
     margin:0 auto;
-    background-color:#f6f6ef;
+    color:#ffffff;
+    padding-left:2rem;
+}
+
+.story-item {
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-size:1.4rem;
+    border-bottom:1px solid #5b5b5b;
+    min-height:60px;
+}
+
+.story-link {
+    color:#ffffff;
+    text-decoration:none;
+}
+
+.story-link:hover {
+    color:#ff6600;
+}
+
+.story-item h3 {
+    margin:0;
+    padding:0.5rem 0;
+    font-weight:300;
+    font-size:1.8rem;
+}
+
+.story-cols {
+    display:flex;
+    flex-flow:column;
+    justify-content: center;
+    height:60px;
+}
+
+.story-row {
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.story-item-number {
+    margin-right:1rem;
+}
+
+.story-arrow {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid #ffffff;
+    margin-right:1rem;
+}
+
+.story-score {
+    margin-right:1rem;
+}
+
+.username-link {
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.username-link:hover {
+    color:#ff6600;
 }

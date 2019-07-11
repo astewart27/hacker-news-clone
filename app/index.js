@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import Header from './components/Header';
@@ -10,7 +10,7 @@ import './styles/Stories.css';
 
 const JSON_QUERY = ".json?print=pretty";
 
-class App extends React.Component{
+class App extends Component{
 
     state = {
         news: []
@@ -23,27 +23,24 @@ class App extends React.Component{
         this.getNews(stories);
     }
 
-    getNews(stories) {
-        const result = [];
-        stories.map((story) => {
-            fetch(`https://hacker-news.firebaseio.com/v0/item/${story}${JSON_QUERY}`)
-            .then(res => res.json())
-            .then(data => {
-                if(!result.includes(data)) {
-                    result.push(data);
-                }
-            });
+    async getNews(stories) {
+
+        const result = stories.map(async (story) => {
+            const res = await fetch(`https://hacker-news.firebaseio.com/v0/item/${story}${JSON_QUERY}`);
+            const data = await res.json();
+            return data;
         });
-        this.setState({news: result});
+
+        const finalResults = await Promise.all(result);
+
+        this.setState({ news: finalResults });
     }
 
     render(){
         return(
             <div className="hacker-news-wrapper">
                 <Header/>
-                {this.state.news && 
-                    <Stories stories={this.state.news}/>
-                }
+                {this.state.news != null && <Stories stories={this.state.news}/>}
             </div>
         );
     }
