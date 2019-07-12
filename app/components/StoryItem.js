@@ -9,7 +9,7 @@ class StoryItem extends Component {
         };
     }
 
-    toggleClass = (e) => {
+    toggleClass = () => {
         const currentState = this.state.active;
         this.setState({ active: !currentState });
     }
@@ -41,7 +41,7 @@ class StoryItem extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
