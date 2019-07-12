@@ -36,8 +36,8 @@ class StoryItem extends Component {
                     <div className="story-row">
                         <div className="story-arrow"><span className="sr-only">upvote arrow</span></div>
                         <div className="story-score">{this.props.details.score}</div>
-                        <div className="story-by">by: <a className="username-link" href={`https://news.ycombinator.com/user?id=${this.props.details.by}`}>{this.props.details.by}</a></div>
-                        <div className="story-timestamp">{this.getTime(`${this.props.details.time}`)}</div>
+                        <div className="story-by">by: <a className="username-link" href={`https://news.ycombinator.com/user?id=${this.props.details.by}`} target="_blank" rel="noopener noreferrer">{this.props.details.by}</a></div>
+                        <div className="story-timestamp"><a className="story-timestamp-link" href={`https://news.ycombinator.com/item?id=${this.props.details.id}`} target="_blank" rel="noopener noreferrer">{this.getTime(`${this.props.details.time}`)}</a></div>
                         <div className="story-comments" onClick={this.toggleClass}>{this.props.details.descendants}<span className="comment icon"></span></div>
                     </div>
                 </div>
