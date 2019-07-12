@@ -14,14 +14,15 @@ class StoryItem extends Component {
         this.setState({ active: !currentState });
     }
 
-    getTime = (timestamp) => { 
+    getTime = (timestamp) => {
+        const currentDate = new Date();
         const date = new Date(timestamp * 1000);
-        const hours = date.getHours();
-        var minutes = date.getMinutes();    
-        if(hours > 1) {
-            return hours + " hours ago";
+        let diff = (currentDate.getTime() - date.getTime()) / 1000;
+        diff /= (60 * 60);
+        if(Math.abs(Math.round(diff)) > 1) {
+            return Math.abs(Math.round(diff)) + " hours ago";
         } else {
-            return minutes + " minutes ago";
+            return Math.abs(Math.round(diff)) + " hour ago";
         }
     }
 
@@ -35,8 +36,8 @@ class StoryItem extends Component {
                     <div className="story-row">
                         <div className="story-arrow"><span className="sr-only">upvote arrow</span></div>
                         <div className="story-score">{this.props.details.score}</div>
-                        <div className="story-by">by: <a className="username-link" href={`https://news.ycombinator.com/user?id=${this.props.details.by}`}>{this.props.details.by}</a></div>
-                        <div className="story-timestamp">{this.getTime(`${this.props.details.time}`)}</div>
+                        <div className="story-by">by: <a className="username-link" href={`https://news.ycombinator.com/user?id=${this.props.details.by}`} target="_blank" rel="noopener noreferrer">{this.props.details.by}</a></div>
+                        <div className="story-timestamp"><a className="story-timestamp-link" href={`https://news.ycombinator.com/item?id=${this.props.details.id}`} target="_blank" rel="noopener noreferrer">{this.getTime(`${this.props.details.time}`)}</a></div>
                         <div className="story-comments" onClick={this.toggleClass}>{this.props.details.descendants}<span className="comment icon"></span></div>
                     </div>
                 </div>
