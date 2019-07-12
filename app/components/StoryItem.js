@@ -14,14 +14,15 @@ class StoryItem extends Component {
         this.setState({ active: !currentState });
     }
 
-    getTime = (timestamp) => { 
+    getTime = (timestamp) => {
+        const currentDate = new Date();
         const date = new Date(timestamp * 1000);
-        const hours = date.getHours();
-        var minutes = date.getMinutes();    
-        if(hours > 1) {
-            return hours + " hours ago";
+        let diff = (currentDate.getTime() - date.getTime()) / 1000;
+        diff /= (60 * 60);
+        if(Math.abs(Math.round(diff)) > 1) {
+            return Math.abs(Math.round(diff)) + " hours ago";
         } else {
-            return minutes + " minutes ago";
+            return Math.abs(Math.round(diff)) + " hour ago";
         }
     }
 
