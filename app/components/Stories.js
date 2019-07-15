@@ -4,7 +4,6 @@ import StoryItem from './StoryItem';
 class Stories extends React.Component {
 
     render() {
-        console.log(this.props.stories);
         return (
             <div className="stories-component">
                 {this.props.stories.map((item, index) => {
