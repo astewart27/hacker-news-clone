@@ -26,6 +26,7 @@ class Comments extends Component {
         }
     }
 
+    // converts Unix timestamp into Date object
     getTime = (timestamp) => {
         const currentDate = new Date();
         const date = new Date(timestamp * 1000);
@@ -48,6 +49,13 @@ class Comments extends Component {
         }
     }
 
+    // decodes HTML entities from API data
+    decodeEntities = (encodedString) => {
+        var textArea = document.createElement('textarea');
+        textArea.innerHTML = encodedString;
+        return textArea.value;
+    }
+
     render() {
         return (
             <div className="comments-container">
@@ -60,7 +68,7 @@ class Comments extends Component {
                                     <span className="comments-timestamp"><a className="comments-timestamp-link" href={`https://news.ycombinator.com/item?id=${item.id}`} target="_blank" rel="noopener noreferrer">{this.getTime(`${item.time}`)}</a></span>
                                 </div>
                                 <div className="comments-text">
-                                    <p>{item.text}</p>
+                                    <p>{this.decodeEntities(`${item.text}`)}</p>
                                 </div>
                             </div>
                         </div>
