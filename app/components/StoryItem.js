@@ -19,12 +19,22 @@ class StoryItem extends Component {
     getTime = (timestamp) => {
         const currentDate = new Date();
         const date = new Date(timestamp * 1000);
-        let diff = (currentDate.getTime() - date.getTime()) / 1000;
-        diff /= (60 * 60);
-        if(Math.abs(Math.round(diff)) > 1) {
-            return Math.abs(Math.round(diff)) + " hours ago";
+        const itemDateHours = date.getHours();
+        const currentDateHours = currentDate.getHours();
+        const itemDateMinutes = date.getMinutes();
+        const currentDateMinutes = currentDate.getMinutes();
+        const diffHours = (currentDateHours - itemDateHours);
+        const diffMinutes = (currentDateMinutes - itemDateMinutes);
+        if(diffHours > 1) {
+            return diffHours + " hours ago";
+        } else if (diffHours === 1) {
+            return diffHours + " hour ago";
         } else {
-            return Math.abs(Math.round(diff)) + " hour ago";
+            if (diffMinutes > 1) {
+                return diffMinutes + " minutes ago";
+            } else {
+                return diffMinutes + " minute ago";
+            }
         }
     }
 

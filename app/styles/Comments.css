@@ -1,0 +1,41 @@
+.comments-container {
+    margin:0;
+    padding:2rem;
+}
+
+.comments-cols {
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding:2rem;
+    border:1px solid #ffffff;
+    border-radius:5px;
+    margin-bottom:2rem;
+}
+
+.comments-user {
+    margin-right:1rem;
+}
+
+.comments-user-link {
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.comments-user-link:hover {
+    color:#ff6600;
+}
+
+.comments-timestamp-link {
+    color:#ffffff;
+    text-decoration: none;
+}
+
+.comments-timestamp-link:hover {
+    color:#ff6600;
+}
+
+.comments-text p {
+    line-height:1.4em;
+}
